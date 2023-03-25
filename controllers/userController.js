@@ -12,3 +12,16 @@ export const createNewUser = asyncHandler(async (req, res, next) => {
     data: user,
   });
 });
+
+//@desc     Get user by id
+//@route    GET /api/v1/users/:id
+//@access   Private
+export const getUser = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  const user = await User.find({ userID: id });
+
+  res.status(200).json({
+    success: true,
+    data: user,
+  });
+});
