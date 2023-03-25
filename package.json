@@ -6,14 +6,13 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "server": "node --watch server.js",
+    "server": "nodemon server.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Ron Klik",
   "license": "MIT",
   "devDependencies": {
-    "colors": "^1.4.0",
     "concurrently": "^7.6.0"
   },
   "dependencies": {
