@@ -9,7 +9,7 @@ import connectDB from "./config/db.js";
 
 dotenv.config({ path: "./config/config.env" });
 
-connectDB();
+// connectDB();
 
 const app = express();
 
@@ -27,11 +27,17 @@ app.use("/api/v1", router);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(
-  PORT,
-  console.log(`Server running in ${process.env.NODE_ENV}
-mode on port ${PORT}`)
-);
+// app.listen(
+//   PORT,
+//   console.log(`Server running in ${process.env.NODE_ENV}
+// mode on port ${PORT}`)
+// );
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log("listening for requests");
+  });
+});
 
 process.on("unhandledRejection", (err, promise) => {
   console.log(`Error: ${err.message}`.red);
